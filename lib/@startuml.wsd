@@ -1,0 +1,623 @@
+@startuml
+set namespaceSeparator ::
+
+class "washing_love::utils::utils_button_auth.dart::AuthButtonUtils" {
+  +String* btnText
+  +Function* onPressed
+  +Widget* build()
+}
+
+class "washing_love::utils::icon_title.dart::HomePageIcon" {
+  +String* iconpath
+  +String* title
+  +Widget* build()
+}
+
+class "washing_love::utils::page_in_progress_.dart::DeliveryType" {
+  +int* index
+  {static} +List<DeliveryType*>* values
+  {static} +DeliveryType* shop_drop
+  {static} +DeliveryType* collect_deliver
+}
+
+"washing_love::utils::page_in_progress_.dart::DeliveryType" o-- "washing_love::utils::page_in_progress_.dart::DeliveryType"
+
+class "washing_love::utils::page_in_progress_.dart::TaskModel" {
+  +String* driverName
+  +String* imgUrl
+  +String* date
+  +String* time
+  +String* discription
+  +DeliveryType* deliverType
+  +String* productList
+  +double* rattings
+  +double* deliveryCharge
+}
+
+"washing_love::utils::page_in_progress_.dart::TaskModel" o-- "washing_love::utils::page_in_progress_.dart::DeliveryType"
+
+class "washing_love::utils::page_in_progress_.dart::TaskInProgressPage" {
+  +_TaskInProgressPageState* createState()
+}
+
+class "washing_love::utils::page_in_progress_.dart::_TaskInProgressPageState" {
+  +List<dynamic>* pending
+  +List<dynamic>* processing
+  +void initState()
+  +dynamic getData()
+  +Widget* build()
+  -dynamic _buildListView()
+}
+
+class "washing_love::utils::page_pending.dart::DeliveryType" {
+  +int* index
+  {static} +List<DeliveryType*>* values
+  {static} +DeliveryType* shop_drop
+  {static} +DeliveryType* collect_deliver
+}
+
+"washing_love::utils::page_pending.dart::DeliveryType" o-- "washing_love::utils::page_pending.dart::DeliveryType"
+
+class "washing_love::utils::page_pending.dart::TaskModel" {
+  +String* driverName
+  +String* imgUrl
+  +String* date
+  +String* time
+  +String* discription
+  +DeliveryType* deliverType
+  +String* productList
+  +double* rattings
+  +double* deliveryCharge
+}
+
+"washing_love::utils::page_pending.dart::TaskModel" o-- "washing_love::utils::page_pending.dart::DeliveryType"
+
+class "washing_love::utils::page_pending.dart::TaskPendingPage" {
+  +_TasksState* createState()
+}
+
+class "washing_love::utils::page_pending.dart::_TasksState" {
+  +List<dynamic>* completed
+  +List<dynamic>* rejected
+  +void initState()
+  +dynamic getData()
+  +Widget* build()
+  -dynamic _buildListView()
+}
+
+class "washing_love::utils::utils_textform_field_normal.dart::TextFormFieldNormalUtils" {
+  +String* textLabel
+  +Function* validator
+  +String* hintText
+  +TextEditingController* controller
+  +bool* isPhonekey
+  +bool* disabled
+  +Widget* build()
+}
+
+"washing_love::utils::utils_textform_field_normal.dart::TextFormFieldNormalUtils" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "washing_love::utils::page_task_view.dart::HistoryPage" {
+  +User* user
+  +String* token
+  +_HistoryPageState* createState()
+}
+
+"washing_love::utils::page_task_view.dart::HistoryPage" o-- "washing_love::models::user.dart::User"
+
+class "washing_love::utils::page_task_view.dart::_HistoryPageState" {
+  +TabController* tabController
+  +User* user
+  +String* token
+  +dynamic buildTab()
+  +void initState()
+  +Widget* build()
+}
+
+"washing_love::utils::page_task_view.dart::_HistoryPageState" o-- "flutter::src::material::tab_controller.dart::TabController"
+"washing_love::utils::page_task_view.dart::_HistoryPageState" o-- "washing_love::models::user.dart::User"
+"flutter::src::widgets::ticker_provider.dart::SingleTickerProviderStateMixin" <|-- "washing_love::utils::page_task_view.dart::_HistoryPageState"
+
+class "washing_love::utils::utils_app_bar_common.dart::AppBarCommonUtils" {
+  +String* appBarTitle
+  +Widget* build()
+}
+
+class "washing_love::utils::logo.dart::Logo" {
+  +Widget* build()
+}
+
+class "washing_love::utils::utils_theme.dart::AppColors" {
+  {static} +ThemeData* lightTheme
+  {static} +Color* color()
+}
+
+"washing_love::utils::utils_theme.dart::AppColors" o-- "flutter::src::material::theme_data.dart::ThemeData"
+
+class "washing_love::utils::utils_text_progress_page.dart::ProgressPageHeaderTextUtils" {
+  +String* text
+  +Widget* build()
+}
+
+class "washing_love::utils::utils_icon.dart::AppIcon" {
+  {static} -String* _kFontFam
+  {static} +IconData* home
+  {static} +IconData* tasks
+  {static} +IconData* offers
+  {static} +IconData* profile
+  {static} +IconData* user
+}
+
+"washing_love::utils::utils_icon.dart::AppIcon" o-- "flutter::src::widgets::icon_data.dart::IconData"
+
+class "washing_love::utils::utils_textform_field_password.dart::TextFormFieldPasswordUtils" {
+  +String* textLabel
+  +Function* validator
+  +String* hintText
+  +TextEditingController* controller
+  +Widget* build()
+}
+
+"washing_love::utils::utils_textform_field_password.dart::TextFormFieldPasswordUtils" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "washing_love::utils::utils_bottom_nav_bar.dart::BottomNavigationUtils" {
+  +int* initValue
+  +User* user
+  +String* token
+  +_BottomNavigationUtilsState* createState()
+}
+
+"washing_love::utils::utils_bottom_nav_bar.dart::BottomNavigationUtils" o-- "washing_love::models::user.dart::User"
+
+class "washing_love::utils::utils_bottom_nav_bar.dart::_BottomNavigationUtilsState" {
+  +void initState()
+  +void dispose()
+  +Widget* build()
+}
+
+class "washing_love::models::review_rating.dart::ReviewRating" {
+  +String* id
+  +User* customer
+  +WashCenter* washCenter
+  +String* review
+  +int* rating
+}
+
+"washing_love::models::review_rating.dart::ReviewRating" o-- "washing_love::models::user.dart::User"
+"washing_love::models::review_rating.dart::ReviewRating" o-- "washing_love::models::washer.dart::WashCenter"
+
+class "washing_love::models::app_enums.dart::UserState" {
+  +int* index
+  {static} +List<UserState*>* values
+  {static} +UserState* PENDING
+  {static} +UserState* ACCEPTED
+  {static} +UserState* REJECTED
+  {static} +UserState* DELETED
+  {static} +UserState* LOCK
+  {static} +UserState* UNLOCK
+}
+
+"washing_love::models::app_enums.dart::UserState" o-- "washing_love::models::app_enums.dart::UserState"
+
+class "washing_love::models::app_enums.dart::WashCenterState" {
+  +int* index
+  {static} +List<WashCenterState*>* values
+  {static} +WashCenterState* ACTIVE
+  {static} +WashCenterState* PENDING
+  {static} +WashCenterState* DELETED
+}
+
+"washing_love::models::app_enums.dart::WashCenterState" o-- "washing_love::models::app_enums.dart::WashCenterState"
+
+class "washing_love::models::app_enums.dart::PackageStatus" {
+  +int* index
+  {static} +List<PackageStatus*>* values
+  {static} +PackageStatus* PENDING
+  {static} +PackageStatus* ACCEPTED
+  {static} +PackageStatus* REJECTED
+  {static} +PackageStatus* DELETED
+}
+
+"washing_love::models::app_enums.dart::PackageStatus" o-- "washing_love::models::app_enums.dart::PackageStatus"
+
+class "washing_love::models::app_enums.dart::NotificationState" {
+  +int* index
+  {static} +List<NotificationState*>* values
+  {static} +NotificationState* SEEN
+  {static} +NotificationState* UNSEEN
+}
+
+"washing_love::models::app_enums.dart::NotificationState" o-- "washing_love::models::app_enums.dart::NotificationState"
+
+class "washing_love::models::app_enums.dart::BookingStatus" {
+  +int* index
+  {static} +List<BookingStatus*>* values
+  {static} +BookingStatus* COMPLETED
+  {static} +BookingStatus* PENDING
+  {static} +BookingStatus* PROCESSING
+  {static} +BookingStatus* REJECTED
+}
+
+"washing_love::models::app_enums.dart::BookingStatus" o-- "washing_love::models::app_enums.dart::BookingStatus"
+
+class "washing_love::models::user.dart::User" {
+  +String* id
+  +String* firstname
+  +String* lastname
+  +String* email
+  +String* password
+  +String* address
+  +String* phone
+  +String* city
+  +Role* role
+  +UserState* state
+  +String* token
+  +Map<String*, dynamic>* toJson()
+}
+
+"washing_love::models::user.dart::User" o-- "washing_love::models::role.dart::Role"
+"washing_love::models::user.dart::User" o-- "washing_love::models::app_enums.dart::UserState"
+
+class "washing_love::models::packages.dart::Packages" {
+  +String* id
+  +User* user
+  +String* description
+  +VehicleType* type
+  +double* price
+  +PackageStatus* state
+  +bool* selected
+  +Map<String*, dynamic>* toJson()
+}
+
+"washing_love::models::packages.dart::Packages" o-- "washing_love::models::user.dart::User"
+"washing_love::models::packages.dart::Packages" o-- "washing_love::models::vehicle_type.dart::VehicleType"
+"washing_love::models::packages.dart::Packages" o-- "washing_love::models::app_enums.dart::PackageStatus"
+
+class "washing_love::models::booking.dart::Booking" {
+  +String* id
+  +User* customer
+  +User* detailer
+  +String* date
+  +String* fromtime
+  +BookingStatus* status
+  +WashCenter* washCenter
+  +String* vehicleNo
+  +String* specialNote
+}
+
+"washing_love::models::booking.dart::Booking" o-- "washing_love::models::user.dart::User"
+"washing_love::models::booking.dart::Booking" o-- "washing_love::models::app_enums.dart::BookingStatus"
+"washing_love::models::booking.dart::Booking" o-- "washing_love::models::washer.dart::WashCenter"
+
+class "washing_love::models::notifications.dart::Notification" {
+  +String* id
+  +User* sender
+  +User* receiver
+  +String* notification
+  +DateTime* date
+  +NotificationState* state
+}
+
+"washing_love::models::notifications.dart::Notification" o-- "washing_love::models::user.dart::User"
+"washing_love::models::notifications.dart::Notification" o-- "washing_love::models::app_enums.dart::NotificationState"
+
+class "washing_love::models::role.dart::Role" {
+  +String* id
+  +String* name
+  +Map<String*, dynamic>* toJson()
+}
+
+class "washing_love::models::vehicle_type.dart::VehicleType" {
+  +String* id
+  +String* type
+  +Map<String*, dynamic>* toJson()
+}
+
+class "washing_love::models::washer.dart::WashCenter" {
+  +String* id
+  +String* name
+  +User* user
+  +String* city
+  +List<Packages*>* packages
+  +int* totalRate
+  +int* totalSlot
+  +List<ReviewRating*>* reviewRatings
+  +WashCenterState* state
+  +Map<String*, dynamic>* toJson()
+}
+
+"washing_love::models::washer.dart::WashCenter" o-- "washing_love::models::user.dart::User"
+"washing_love::models::washer.dart::WashCenter" o-- "washing_love::models::app_enums.dart::WashCenterState"
+
+class "washing_love::screens::add_service.dart::AddServicePage" {
+  +_AddServicePageState* createState()
+}
+
+class "washing_love::screens::add_service.dart::_AddServicePageState" {
+  -GlobalKey<FormState*>* _formKey
+  +TextEditingController* nameController
+  +TextEditingController* cityController
+  +TextEditingController* totalrateController
+  +TextEditingController* totalslotController
+  +List<Packages*>* packages
+  +void dispose()
+  +void initState()
+  +dynamic getData()
+  +Widget* build()
+  -void _add()
+}
+
+"washing_love::screens::add_service.dart::_AddServicePageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"washing_love::screens::add_service.dart::_AddServicePageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "washing_love::screens::add_package.dart::AddPackagePage" {
+  +_AddPackagePageState* createState()
+}
+
+class "washing_love::screens::add_package.dart::_AddPackagePageState" {
+  -GlobalKey<FormState*>* _formKey
+  +TextEditingController* vehicleTypeController
+  +TextEditingController* priceController
+  +TextEditingController* descriptionController
+  +TextEditingController* totalslotController
+  +String* vehicleType
+  +void dispose()
+  +void initState()
+  +Widget* build()
+  -void _add()
+}
+
+"washing_love::screens::add_package.dart::_AddPackagePageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"washing_love::screens::add_package.dart::_AddPackagePageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "washing_love::screens::washer_with_packages.dart::WasherWithPackages" {
+  +WashCenter* washCenter
+  +_WasherWithPackagesState* createState()
+}
+
+"washing_love::screens::washer_with_packages.dart::WasherWithPackages" o-- "washing_love::models::washer.dart::WashCenter"
+
+class "washing_love::screens::washer_with_packages.dart::_WasherWithPackagesState" {
+  +Packages* selectedPackage
+  +TextEditingController* vehicleNoController
+  +TextEditingController* specialNoteController
+  +TextEditingController* dateController
+  +TextEditingController* timeController
+  +DateTime* selectedDate
+  +TimeOfDay* selectedTime
+  -GlobalKey<FormState*>* _formKey
+  +void initState()
+  +Widget* build()
+  -Future<Null*>* _selectDate()
+  -Future<Null*>* _selectTime()
+}
+
+"washing_love::screens::washer_with_packages.dart::_WasherWithPackagesState" o-- "washing_love::models::packages.dart::Packages"
+"washing_love::screens::washer_with_packages.dart::_WasherWithPackagesState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"washing_love::screens::washer_with_packages.dart::_WasherWithPackagesState" o-- "flutter::src::material::time.dart::TimeOfDay"
+"washing_love::screens::washer_with_packages.dart::_WasherWithPackagesState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "washing_love::main.dart::MyApp" {
+  +User* user
+  +Widget* build()
+}
+
+"washing_love::main.dart::MyApp" o-- "washing_love::models::user.dart::User"
+
+class "washing_love::auth_pages::page_login.dart::LogInPage" {
+  +_LogInPageState* createState()
+}
+
+class "washing_love::auth_pages::page_login.dart::_LogInPageState" {
+  -GlobalKey<FormState*>* _formKey
+  +bool* checkValue
+  +TextEditingController* emailController
+  +TextEditingController* passController
+  +void dispose()
+  +void initState()
+  +bool* validatePassword()
+  -Widget* _buildForm()
+  -Widget* _buildBottomText()
+  -Widget* _buildSocialLogin()
+  +Future<void>* signInWithGoogle()
+  +Future<void>* signInWithFacebook()
+  -Widget* _buildBottomLink()
+  +Widget* build()
+}
+
+"washing_love::auth_pages::page_login.dart::_LogInPageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"washing_love::auth_pages::page_login.dart::_LogInPageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "washing_love::auth_pages::page_forgot_pass.dart::ForgotPassword" {
+  +_ForgotPasswordState* createState()
+}
+
+class "washing_love::auth_pages::page_forgot_pass.dart::_ForgotPasswordState" {
+  -GlobalKey<FormState*>* _formKey
+  +TextEditingController* emailController
+  +void dispose()
+  -Widget* _buildForm()
+  +Widget* build()
+  -void _onPressed()
+  -dynamic _moveToNext()
+}
+
+"washing_love::auth_pages::page_forgot_pass.dart::_ForgotPasswordState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"washing_love::auth_pages::page_forgot_pass.dart::_ForgotPasswordState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "washing_love::auth_pages::page_new_pass.dart::CreateNewPassword" {
+  +String* inputMail
+  +String* otp
+  +_CreateNewPasswordState* createState()
+}
+
+class "washing_love::auth_pages::page_new_pass.dart::_CreateNewPasswordState" {
+  +String* inputMail
+  +String* otp
+  -GlobalKey<FormState*>* _formKey
+  +TextEditingController* passController
+  +TextEditingController* confirmPassController
+  +void dispose()
+  +bool* validatePassword()
+  -Widget* _buildForm()
+  +Widget* build()
+}
+
+"washing_love::auth_pages::page_new_pass.dart::_CreateNewPasswordState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"washing_love::auth_pages::page_new_pass.dart::_CreateNewPasswordState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "washing_love::auth_pages::page_register.dart::RegisterPage" {
+  +_RegisterPageState* createState()
+}
+
+class "washing_love::auth_pages::page_register.dart::_RegisterPageState" {
+  -GlobalKey<FormState*>* _formKey
+  +String* countryCode
+  -bool* _isLoading
+  +String* role
+  +TextEditingController* firstnameController
+  +TextEditingController* lastnameController
+  +TextEditingController* emailController
+  +TextEditingController* passController
+  +TextEditingController* confirmPassController
+  +TextEditingController* addressController
+  +TextEditingController* cityController
+  +TextEditingController* contactController
+  +void dispose()
+  +void initState()
+  +bool* validatePassword()
+  -void _onCountryChange()
+  +Widget* build()
+  -void _signup()
+}
+
+"washing_love::auth_pages::page_register.dart::_RegisterPageState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+"washing_love::auth_pages::page_register.dart::_RegisterPageState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+
+class "washing_love::auth_pages::page_mail_otp.dart::OtpScreenMail" {
+  +String* inputMail
+  +_OtpScreenMailState* createState()
+}
+
+class "washing_love::auth_pages::page_mail_otp.dart::_OtpScreenMailState" {
+  +String* inputMail
+  +TextEditingController* textEditingController
+  +StreamController<ErrorAnimationType*>* errorController
+  +bool* fullFill
+  +bool* hasError
+  +String* currentText
+  +GlobalKey<FormState*>* formKey
+  +void initState()
+  +void dispose()
+  -Widget* _buildOtp()
+  +Widget* build()
+}
+
+"washing_love::auth_pages::page_mail_otp.dart::_OtpScreenMailState" o-- "flutter::src::widgets::editable_text.dart::TextEditingController"
+"washing_love::auth_pages::page_mail_otp.dart::_OtpScreenMailState" o-- "dart::async::StreamController<ErrorAnimationType>"
+"washing_love::auth_pages::page_mail_otp.dart::_OtpScreenMailState" o-- "flutter::src::widgets::framework.dart::GlobalKey<FormState>"
+
+class "washing_love::landpage.dart::LandPage" {
+  +_LandPageState* createState()
+}
+
+class "washing_love::landpage.dart::_LandPageState" {
+  +void initState()
+  +Widget* build()
+}
+
+class "washing_love::api::api_call.dart::CallApi" {
+  -BuildContext* _context
+  +dynamic showToast()
+  +dynamic showLoading()
+  +dynamic stopLoading()
+  +Future<void>* login()
+  +Future<void>* signup()
+  +Future<void>* addDetailer()
+  +Future<List<WashCenter*>*>* getWashers()
+  +Future<List<WashCenter*>*>* getWashersByUserId()
+  +Future<void>* addPackage()
+  +Future<List<Packages*>*>* getPackagesByUserId()
+  +Future<void>* addBooking()
+  +Future<List<dynamic>*>* getBookingsByUserIdAndStatus()
+  +Future<bool*>* logOut()
+  -void _allocateInSharedPref()
+  -dynamic _getUser()
+  -dynamic _getToken()
+  -dynamic _getUserId()
+  +dynamic isDetailer()
+  -dynamic _getHeaders()
+}
+
+"washing_love::api::api_call.dart::CallApi" o-- "flutter::src::widgets::framework.dart::BuildContext"
+
+class "washing_love::api::api_manipulation.dart::ApiManipulation" {
+  +BuildContext* context
+  +dynamic token
+  +dynamic validateUser()
+  -Future<bool*>* _isLoggedIn()
+  +Future<User*>* fetchUser()
+  +dynamic refreshUser()
+}
+
+"washing_love::api::api_manipulation.dart::ApiManipulation" o-- "flutter::src::widgets::framework.dart::BuildContext"
+
+class "washing_love::api::api_consts.dart::AppConstants" {
+  {static} +String* baseUrl
+  {static} +String* contentType
+  {static} +String* contentTypeValue
+  {static} +String* acceptType
+  {static} +String* acceptTypeValue
+  {static} +String* accessToken
+  {static} +String* sessionKey
+  {static} +String* spUser
+  {static} +String* spToken
+}
+
+class "washing_love::home_directories::page_home.dart::HomePage" {
+  +User* user
+  +String* token
+  +State<StatefulWidget*>* createState()
+}
+
+"washing_love::home_directories::page_home.dart::HomePage" o-- "washing_love::models::user.dart::User"
+
+class "washing_love::home_directories::page_home.dart::_HomeState" {
+  +User* user
+  +String* token
+  +bool* isDetailer
+  -GlobalKey<ScaffoldState*>* _key
+  +List<WashCenter*>* washers
+  +void initState()
+  +dynamic getData()
+  -Widget* _buildFirstCard()
+  +Future<dynamic>* buildText()
+  -Widget* _buildAppBar()
+  +Widget* build()
+}
+
+"washing_love::home_directories::page_home.dart::_HomeState" o-- "washing_love::models::user.dart::User"
+"washing_love::home_directories::page_home.dart::_HomeState" o-- "flutter::src::widgets::framework.dart::GlobalKey<ScaffoldState>"
+
+class "washing_love::home_directories::washersList.dart::WashcentersList" {
+  +_WashcentersListState* createState()
+}
+
+class "washing_love::home_directories::washersList.dart::_WashcentersListState" {
+  +bool* isDetailer
+  +void initState()
+  +dynamic getData()
+  +Widget* build()
+}
+
+class "washing_love::splash_screen.dart::SplashScreen" {
+  +State<StatefulWidget*>* createState()
+}
+
+class "washing_love::splash_screen.dart::_SplashScreenState" {
+  +void initState()
+  +Widget* build()
+}
+
+
+@enduml
