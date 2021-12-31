@@ -46,6 +46,8 @@ class _CreateNewPasswordState extends State<CreateNewPassword> {
             validator: (pass) {
               if (pass == null || pass.isEmpty) {
                 return 'Password is required';
+              } else if( pass.toString().length < 8) {
+                return 'Password must be at least 8 characters long';
               }
               return null;
             },
