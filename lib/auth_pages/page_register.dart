@@ -1,5 +1,6 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:washing_love/api/api_call.dart';
 import 'package:washing_love/auth_pages/page_mail_otp.dart';
 import 'package:washing_love/utils/logo.dart';
@@ -121,6 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
               textLabel: "First Name",
               controller: firstnameController,
               isPhonekey: false,
+              inputFormatter: [new FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),],
             ),
             TextFormFieldNormalUtils(
               // validator: (fName) {
@@ -132,6 +134,7 @@ class _RegisterPageState extends State<RegisterPage> {
               textLabel: "Last Name",
               controller: lastnameController,
               isPhonekey: false,
+              inputFormatter: [new FilteringTextInputFormatter.allow(RegExp("[a-zA-Z]")),],
             ),
             TextFormFieldNormalUtils(
               validator: (eMail) {
@@ -182,6 +185,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 textLabel: "Phone",
                 controller: contactController,
                 isPhonekey: true,
+                inputFormatter: [new FilteringTextInputFormatter.allow(RegExp("[0-9]")),],
               ),
             ),
             TextFormFieldPasswordUtils(

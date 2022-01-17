@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // text input normal widget common
 class TextFormFieldNormalUtils extends StatelessWidget {
@@ -9,6 +10,7 @@ class TextFormFieldNormalUtils extends StatelessWidget {
   final bool isPhonekey;
   final bool disabled;
   final int lines;
+  final List<TextInputFormatter> inputFormatter;
 
   TextFormFieldNormalUtils(
       {this.textLabel,
@@ -17,7 +19,8 @@ class TextFormFieldNormalUtils extends StatelessWidget {
       this.controller,
       this.isPhonekey,
       this.disabled,
-      this.lines});
+      this.lines,
+      this.inputFormatter});
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,7 @@ class TextFormFieldNormalUtils extends StatelessWidget {
         maxLines: lines == null ? 1 : lines,
         enabled: disabled == null ? true : false,
         keyboardType: (isPhonekey) ? TextInputType.phone : TextInputType.text,
+        inputFormatters: inputFormatter,
         decoration: InputDecoration(
           labelText: textLabel,
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
